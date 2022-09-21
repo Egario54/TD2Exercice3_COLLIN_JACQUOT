@@ -25,12 +25,12 @@ public class Formation {
     public Set<String> getMatieres(){
         return this.matieres.keySet();
     }
-    public Integer getCoefficient(String matiere) {
+    public Integer getCoefficient(String matiere) throws MatiereInexistanteException {
         if(matieres.containsKey(matiere)){
             return matieres.get(matiere);
         }
         else{
-            return null;
+            throw new MatiereInexistanteException();
         }
     }
 
