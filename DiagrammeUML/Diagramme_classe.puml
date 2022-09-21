@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Identite{
+-String NIP
+-String nom
+-String prénom
+---
++Identite()
++Identite(String,String,String)
++toString()
+}
+class Etudiant{
+-HashMap<String:Matière,List<Double>:notes> résultats
+---
++Etudiant()
++Etudiant(Identite, Formation, HashMap<String,ArrayList<Double>)
++ajouterNote(String, double)
++calculerMoyenne(String)
++calculerMoyenneGenerale()
+}
+class Formation{
+  -String idformation
+  -HashMap<String:matiere,Integer:coefficient> matières
+  ---
+  +Formation()
+}
+class Groupe{
+---
++Groupe()
++ajouterEtudiant(Etudiant)
++supprimerEtudiant(Etudiant)
+}
+Groupe -> Etudiant : -Etudiants etu
+Groupe -> Formation : -Formation form
+Etudiant -> Identite : -Identite idEtu
+Etudiant -> Formation : -Formation form
+
+
+
+@enduml
