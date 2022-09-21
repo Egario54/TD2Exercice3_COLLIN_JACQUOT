@@ -53,4 +53,15 @@ public class Etudiant {
         moyenne /= sommecoeff;
         return moyenne;
     }
+
+    public String toString(){
+        String s = "Etudiant" + identite.toString() + "\n" + formation.toString() + "\n";
+        for(String matiere : notes.keySet()){
+            s += " - " + matiere + " : ";
+            for(Double note : notes.get(matiere)){
+                s += note + " ,";
+            }
+        }
+        return s;
+    }
 }

@@ -33,4 +33,13 @@ public class Formation {
             return null;
         }
     }
+
+    public String toString(){
+        String s = "Formation" + this.idformation + " : \n" + " Matières : \n";
+        for(String matiere : this.matieres.keySet()){
+            s += " - " + matiere + " : " + this.matieres.get(matiere) + "\n";
+        }
+        return s;
+
+    }
 }
