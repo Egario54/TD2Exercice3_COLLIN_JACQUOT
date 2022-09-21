@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 
 public class Formation {
     private String idformation;
@@ -15,9 +17,14 @@ public class Formation {
         this.matieres.put(mat,coef);
     }
     public void supprimerMatiere(String mat){
-        this.matieres.remove(mat);
+        if(matieres.containsKey(mat)){
+            this.matieres.remove(mat);
+        } else throw new MatiereInexistanteException();
     }
 
+    public Set<String> getMatieres(){
+        return this.matieres.keySet();
+    }
     public Integer getCoefficient(String matiere) {
         if(matieres.containsKey(matiere)){
             return matieres.get(matiere);
