@@ -7,9 +7,9 @@ public class Etudiant {
     private Formation formation;
     private HashMap<String, ArrayList<Double>> notes;
 
-    public Etudiant() {
+    public Etudiant(String idform) {
         this.identite = new Identite();
-        this.formation = new Formation();
+        this.formation = new Formation(idform);
         this.notes = new HashMap<>();
     }
 
@@ -29,7 +29,7 @@ public class Etudiant {
         }
     }
 
-    public double calculerMoyenne(String matière){
+    public double calculerMoyenne(String matière) throws MatiereInexistanteException {
         double moyenne = 0;
         if (notes.containsKey(matière)) {
             for (Double note : notes.get(matière)) {
@@ -38,17 +38,19 @@ public class Etudiant {
             moyenne /= notes.get(matière).size();
         }
         else {
-            System.out.println("La matière n'existe pas");
+            throw new MatiereInexistanteException();
         }
         return moyenne;
     }
 
-    public double calculerMoyenneGenerale(){
+    public double calculerMoyenneGenerale() throws MatiereInexistanteException {
         double moyenne = 0;
+        int sommecoeff = 0;
         for (String matière : notes.keySet()) {
             moyenne += calculerMoyenne(matière)*formation.getCoefficient(matière);
+            sommecoeff += formation.getCoefficient(matière);
         }
-        moyenne /= notes.size();
+        moyenne /= sommecoeff;
         return moyenne;
     }
 }

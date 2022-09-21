@@ -16,7 +16,7 @@ public class Formation {
     public void ajouterMatiere(String mat, Integer coef){
         this.matieres.put(mat,coef);
     }
-    public void supprimerMatiere(String mat){
+    public void supprimerMatiere(String mat) throws MatiereInexistanteException {
         if(matieres.containsKey(mat)){
             this.matieres.remove(mat);
         } else throw new MatiereInexistanteException();
