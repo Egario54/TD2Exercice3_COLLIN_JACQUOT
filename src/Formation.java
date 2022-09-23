@@ -13,8 +13,15 @@ public class Formation {
         this.idformation = idform;
         this.matieres = new HashMap<>();
     }
+
+    public String getIdformation() {
+        return idformation;
+    }
+
     public void ajouterMatiere(String mat, Integer coef){
-        this.matieres.put(mat,coef);
+        if (coef > 0){
+            this.matieres.put(mat, coef);
+        }
     }
     public void supprimerMatiere(String mat) throws MatiereInexistanteException {
         if(matieres.containsKey(mat)){
