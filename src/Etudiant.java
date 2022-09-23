@@ -53,4 +53,8 @@ public class Etudiant {
         moyenne /= sommecoeff;
         return moyenne;
     }
+
+    public HashMap<String, ArrayList<Double>> getNotes() {
+        return notes;
+    }
 }

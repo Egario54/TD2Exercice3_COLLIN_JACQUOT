@@ -12,6 +12,29 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class TestEtudiant {
 
+    @Test
+    public void testAjouterNote(){
+        //preparation donnees
+        ArrayList <Double> noteMath = new ArrayList<>();
+        noteMath.add(15.0);
+
+        ArrayList <Double> noteFr = new ArrayList<>();
+        noteFr.add(10.0);
+        noteFr.add(12.0);
+
+        HashMap<String, ArrayList<Double>> notes = new HashMap<>();
+        notes.put("Francais",noteFr);
+        notes.put("Maths",noteMath);
+
+        Etudiant etudiant = new Etudiant("Formation classique");
+        Etudiant etudiantcompare = new Etudiant(new Identite(), new Formation("Formation classique"),notes);
+        //methode testee
+        etudiant.ajouterNote("Francais", 10.0);
+        etudiant.ajouterNote("Francais", 12.0);
+        etudiant.ajouterNote("Maths",15.0);
+        //tests
+        assertEquals(etudiantcompare.getNotes(),etudiant.getNotes());
+    }
     /**
      * Test de la méthode de calcul de moyenne
      */
