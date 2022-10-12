@@ -36,4 +36,29 @@ public class Groupe {
     public Formation getFormation() {
         return formation;
     }
+
+    public double calculerMoyenneGroupe(String matiere) throws MatiereInexistanteException {
+        double moyenne = 0;
+        int nbEtudiants = 0;
+        for (Etudiant etudiant : etudiants) {
+            try {
+                moyenne += etudiant.calculerMoyenne(matiere);
+                nbEtudiants++;
+            }
+            catch (MatiereInexistanteException e) {
+                throw e;
+            }
+        }
+        return moyenne / nbEtudiants;
+    }
+
+    public double CalculerMoyenneGeneraleGroupe() throws MatiereInexistanteException {
+        double moyenne = 0;
+        int nbEtudiants = 0;
+        for (Etudiant etudiant : etudiants) {
+            moyenne += etudiant.calculerMoyenneGenerale();
+            nbEtudiants++;
+        }
+        return moyenne / nbEtudiants;
+    }
 }
