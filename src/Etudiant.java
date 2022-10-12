@@ -19,6 +19,12 @@ public class Etudiant {
         this.notes = notes;
     }
 
+    public Etudiant(Identite identite, Formation formation) {
+        this.identite = identite;
+        this.formation = formation;
+        this.notes = new HashMap<>();
+    }
+
     public Formation getFormation() {
         return formation;
     }
