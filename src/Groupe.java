@@ -67,4 +67,8 @@ public class Groupe {
     public void triAntiAlpha(){
         etudiants.sort(new ComparateurEtudiantsAntiAlpha());
     }
+
+    public void triParMerite(){
+        etudiants.sort(new ComparateurEtudiantsMerite());
+    }
 }
