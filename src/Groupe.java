@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Groupe {
 
@@ -60,5 +59,12 @@ public class Groupe {
             nbEtudiants++;
         }
         return moyenne / nbEtudiants;
+    }
+
+    public void triAlpha(){
+        etudiants.sort(new ComparateurEtudiantsAlpha());
+    }
+    public void triAntiAlpha(){
+        etudiants.sort(new ComparateurEtudiantsAntiAlpha());
     }
 }
