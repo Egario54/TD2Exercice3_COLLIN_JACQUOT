@@ -82,6 +82,10 @@ public class Etudiant {
         return moyenne;
     }
 
+    public HashMap<String, ArrayList<Double>> getNotes() {
+        return notes;
+    }
+
     public String toString(){
         String s = "Etudiant" + identite.toString() + "\n" + formation.toString() + "\n";
         for(String matiere : notes.keySet()){
