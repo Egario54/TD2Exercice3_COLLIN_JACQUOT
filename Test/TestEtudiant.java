@@ -19,27 +19,19 @@ public class TestEtudiant {
      * etudiant ajout de notes avec la methode testee, sert de compare
      */
     @Test
-    public void testAjouterNote() throws MatiereInexistanteException {
-        //preparation donnees
-        ArrayList <Double> noteMath = new ArrayList<>();
-        noteMath.add(15.0);
+    public void testAjouterNote() throws MatiereInexistanteException, CoefficientIncorrecteException {
+        Identite i1 = new Identite("23", "Dupont", "Jean");
+        Formation f1 = new Formation("DUT Informatique");
+        f1.ajouterMatiere("Mathematiques",3);
+        f1.ajouterMatiere("Physique",2);
+        Etudiant e1 = new Etudiant(i1, f1);
+        e1.ajouterNote("Mathematiques", 12);
+        e1.ajouterNote("Physique", 15);
 
-        ArrayList <Double> noteFr = new ArrayList<>();
-        noteFr.add(10.0);
-        noteFr.add(12.0);
+        assertEquals(e1.getNotes().get("Mathematiques").size(), 1);
+        assertEquals(e1.getNotes().get("Physique").size(), 1);
 
-        HashMap<String, ArrayList<Double>> notes = new HashMap<>();
-        notes.put("Francais",noteFr);
-        notes.put("Maths",noteMath);
 
-        Etudiant etudiant = new Etudiant(new Formation("Formation classique"));
-        Etudiant etudiantcompare = new Etudiant(new Identite(), new Formation("Formation classique"),notes);
-        //methode testee
-        etudiant.ajouterNote("Francais", 10.0);
-        etudiant.ajouterNote("Francais", 12.0);
-        etudiant.ajouterNote("Maths",15.0);
-        //tests
-        assertEquals(etudiantcompare.getNotes(),etudiant.getNotes());
     }
     /**
      * Test de la méthode de calcul de moyenne
@@ -68,7 +60,7 @@ public class TestEtudiant {
      * compare le resultat prevu d'une moyenne au resultat de la methode, un peu comme la methode d'avant
      */
     @Test
-    public void testCalculerMoyenneGenerale() throws MatiereInexistanteException {
+    public void testCalculerMoyenneGenerale() throws MatiereInexistanteException, CoefficientIncorrecteException {
         //preparation donnees
         ArrayList <Double> noteMath = new ArrayList<>();
         noteMath.add(15.0);
