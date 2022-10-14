@@ -18,9 +18,11 @@ public class Formation {
         return idformation;
     }
 
-    public void ajouterMatiere(String mat, Integer coef){
+    public void ajouterMatiere(String mat, Integer coef) throws CoefficientIncorrecteException {
         if (coef > 0){
             this.matieres.put(mat, coef);
+        }else {
+            throw new CoefficientIncorrecteException();
         }
     }
     public void supprimerMatiere(String mat) throws MatiereInexistanteException {

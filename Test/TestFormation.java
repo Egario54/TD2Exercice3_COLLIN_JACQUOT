@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class TestFormation {
 
     @Test
-    public void test_AjouterMatiere(){
+    public void test_AjouterMatiere() throws CoefficientIncorrecteException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
         f.ajouterMatiere("Physique", 4);
@@ -15,7 +15,13 @@ public class TestFormation {
     }
 
     @Test
-    public void test_SupprimerMatiere() throws MatiereInexistanteException {
+    public void test_AjouterMatiere_CoefficientInferieurAZero(){
+        Formation f = new Formation("L3");
+        assertThrows(CoefficientIncorrecteException.class, () -> f.ajouterMatiere("Maths", -6));
+    }
+
+    @Test
+    public void test_SupprimerMatiere() throws MatiereInexistanteException, CoefficientIncorrecteException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
         f.ajouterMatiere("Physique", 4);
@@ -27,7 +33,7 @@ public class TestFormation {
 
     @Test
 
-    public void test_getCoefficient() throws MatiereInexistanteException {
+    public void test_getCoefficient() throws MatiereInexistanteException, CoefficientIncorrecteException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
         f.ajouterMatiere("Physique", 4);
@@ -36,7 +42,7 @@ public class TestFormation {
     }
 
     @Test
-    public void test_getCoefficientMatiereInexistante() throws MatiereInexistanteException {
+    public void test_getCoefficientMatiereInexistante() throws MatiereInexistanteException, CoefficientIncorrecteException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
         f.ajouterMatiere("Physique", 4);
@@ -45,7 +51,7 @@ public class TestFormation {
     }
 
     @Test
-    public void test_supprimerMatiereInexistante() throws MatiereInexistanteException {
+    public void test_supprimerMatiereInexistante() throws MatiereInexistanteException, CoefficientIncorrecteException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
         f.ajouterMatiere("Physique", 4);
