@@ -4,14 +4,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 /**
- * Classe de test utilisant les mêmes données de génération afin de comparer le bon fonctionnement des methodes
+ * Classe de test de la classe Etudiant
+ * Le choix de ne pas effectuer de BeforeEach est du au fait que les donnees avant le test ne sont pas les memes
  */
 public class TestEtudiant {
 
+    /**
+     * Test comparant deux cas d'ajout de notes
+     * Parametres:
+     * etudiantcompare ajout manuel de notes, sert de comparant
+     * etudiant ajout de notes avec la methode testee, sert de compare
+     */
     @Test
     public void testAjouterNote(){
         //preparation donnees
@@ -37,6 +43,7 @@ public class TestEtudiant {
     }
     /**
      * Test de la méthode de calcul de moyenne
+     * compare le resultat prevu d'une moyenne au resultat de la methode
      */
     @Test
     public void testCalculerMoyenne() throws MatiereInexistanteException {
@@ -58,6 +65,7 @@ public class TestEtudiant {
 
     /**
      * Methode qui permet de vérifier que le calcul de moyenne générale est correct
+     * compare le resultat prevu d'une moyenne au resultat de la methode, un peu comme la methode d'avant
      */
     @Test
     public void testCalculerMoyenneGenerale() throws MatiereInexistanteException {
