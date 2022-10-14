@@ -19,7 +19,7 @@ public class TestEtudiant {
      * etudiant ajout de notes avec la methode testee, sert de compare
      */
     @Test
-    public void testAjouterNote(){
+    public void testAjouterNote() throws MatiereInexistanteException {
         //preparation donnees
         ArrayList <Double> noteMath = new ArrayList<>();
         noteMath.add(15.0);
@@ -32,7 +32,7 @@ public class TestEtudiant {
         notes.put("Francais",noteFr);
         notes.put("Maths",noteMath);
 
-        Etudiant etudiant = new Etudiant("Formation classique");
+        Etudiant etudiant = new Etudiant(new Formation("Formation classique"));
         Etudiant etudiantcompare = new Etudiant(new Identite(), new Formation("Formation classique"),notes);
         //methode testee
         etudiant.ajouterNote("Francais", 10.0);
