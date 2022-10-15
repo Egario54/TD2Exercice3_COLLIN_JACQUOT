@@ -3,7 +3,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTri {
-
+    /**
+     * Permet de regarder si le tri est bien alphanumérique
+     * @throws MauvaiseFormation
+     * @throws CoefficientIncorrectException
+     */
     @Test
     public void test_tri_alpha() throws MauvaiseFormation, CoefficientIncorrectException {
         Formation f = new Formation("L3");
@@ -25,6 +29,11 @@ public class TestTri {
         assertEquals(e1, g.getEtudiants().get(2));
     }
 
+    /**
+     * Permet de vérifier que le tri est bien antialphanumérique
+     * @throws MauvaiseFormation
+     * @throws CoefficientIncorrectException
+     */
     @Test
     public void test_tri_anti_alpha() throws MauvaiseFormation, CoefficientIncorrectException {
         Formation f = new Formation("L3");
@@ -46,6 +55,12 @@ public class TestTri {
         assertEquals(e2, g.getEtudiants().get(2));
     }
 
+    /**
+     * Test du tri par mérite !
+     * @throws MauvaiseFormation
+     * @throws MatiereInexistanteException
+     * @throws CoefficientIncorrectException
+     */
     @Test
     public void test_tri_par_merite() throws MauvaiseFormation, MatiereInexistanteException, CoefficientIncorrectException {
         Formation f = new Formation("L3");

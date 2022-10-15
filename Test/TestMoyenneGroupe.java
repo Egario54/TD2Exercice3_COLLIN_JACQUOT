@@ -3,7 +3,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestMoyenneGroupe {
-
+    /**
+     * Vérifie si la moyenne d'un groupe par rapport à une matière est bien calculée
+     * @throws MatiereInexistanteException
+     * @throws MauvaiseFormation
+     * @throws CoefficientIncorrectException
+     */
     @Test
     public void Calculer_moyenne_groupe() throws MatiereInexistanteException, MauvaiseFormation, CoefficientIncorrectException {
         Formation f = new Formation("L3");
@@ -30,6 +35,12 @@ public class TestMoyenneGroupe {
         assertEquals(15, g.calculerMoyenneGroupe("Maths"));
     }
 
+    /**
+     * Vérifie si la moyenne générale d'un groupe est bien calculée
+     * @throws MatiereInexistanteException
+     * @throws MauvaiseFormation
+     * @throws CoefficientIncorrectException
+     */
     @Test
     public void Calculer_moyenne_generale_groupe() throws MatiereInexistanteException, MauvaiseFormation, CoefficientIncorrectException {
         Formation f = new Formation("L3");

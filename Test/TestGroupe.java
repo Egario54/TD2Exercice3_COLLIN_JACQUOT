@@ -4,7 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestGroupe {
-
+    /**
+     * Test du fonctionnement normal de l'ajout d'un étudiant
+     * @throws MauvaiseFormation
+     */
     @Test
     public void test_ajouter_vrai_etudiant() throws MauvaiseFormation {
         Formation formation = new Formation("Java");
@@ -18,6 +21,10 @@ public class TestGroupe {
         assertEquals(2, groupe.getEtudiants().size());
     }
 
+    /**
+     * Vérifie la bonne levée de l'exception lorsqu'un étudiant "se trompe" de groupe
+     * @throws MauvaiseFormation
+     */
     @Test
     public void test_ajouter_faux_etudiant() throws MauvaiseFormation {
         Formation formation = new Formation("Java");
@@ -31,6 +38,11 @@ public class TestGroupe {
         assertThrows(MauvaiseFormation.class, () -> groupe.ajouterEtudiant(e2));
     }
 
+    /**
+     * Test du bon fonctionnement de la suppression d'un étudiant
+     * @throws MauvaiseFormation
+     * @throws EtudiantInexistant
+     */
     @Test
     public void test_supprimer_vrai_etudiant() throws MauvaiseFormation, EtudiantInexistant {
         Formation formation = new Formation("Java");
@@ -45,6 +57,11 @@ public class TestGroupe {
         assertEquals(1, groupe.getEtudiants().size());
     }
 
+    /**
+     * Vérifie qu'EtudiantInexistant est bien levé
+     * @throws MauvaiseFormation
+     * @throws EtudiantInexistant le but de ce test est de le lever
+     */
     @Test
     public void test_supprimer_faux_etudiant() throws MauvaiseFormation, EtudiantInexistant {
         Formation formation = new Formation("Java");
