@@ -19,7 +19,7 @@ public class TestEtudiant {
      * etudiant ajout de notes avec la methode testee, sert de compare
      */
     @Test
-    public void testAjouterNote() throws MatiereInexistanteException, CoefficientIncorrecteException {
+    public void testAjouterNote() throws MatiereInexistanteException, CoefficientIncorrectException {
         Identite i1 = new Identite("23", "Dupont", "Jean");
         Formation f1 = new Formation("DUT Informatique");
         f1.ajouterMatiere("Mathematiques",3);
@@ -60,7 +60,7 @@ public class TestEtudiant {
      * compare le resultat prevu d'une moyenne au resultat de la methode, un peu comme la methode d'avant
      */
     @Test
-    public void testCalculerMoyenneGenerale() throws MatiereInexistanteException, CoefficientIncorrecteException {
+    public void testCalculerMoyenneGenerale() throws MatiereInexistanteException, CoefficientIncorrectException {
         //preparation donnees
         ArrayList <Double> noteMath = new ArrayList<>();
         noteMath.add(15.0);

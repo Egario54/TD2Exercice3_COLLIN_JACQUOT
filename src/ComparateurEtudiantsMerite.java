@@ -1,7 +1,9 @@
 import java.util.Comparator;
 
+/**
+ * Comparateur qui permet de trier dans Groupe selon leur moyenne générale !
+ */
 public class ComparateurEtudiantsMerite implements Comparator<Etudiant> {
-
 
     @Override
     public int compare(Etudiant o1, Etudiant o2) {

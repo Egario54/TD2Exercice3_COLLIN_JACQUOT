@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestTri {
 
     @Test
-    public void test_tri_alpha() throws MauvaiseFormation, CoefficientIncorrecteException {
+    public void test_tri_alpha() throws MauvaiseFormation, CoefficientIncorrectException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
 
@@ -26,7 +26,7 @@ public class TestTri {
     }
 
     @Test
-    public void test_tri_anti_alpha() throws MauvaiseFormation, CoefficientIncorrecteException {
+    public void test_tri_anti_alpha() throws MauvaiseFormation, CoefficientIncorrectException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
 
@@ -47,7 +47,7 @@ public class TestTri {
     }
 
     @Test
-    public void test_tri_par_merite() throws MauvaiseFormation, MatiereInexistanteException, CoefficientIncorrecteException {
+    public void test_tri_par_merite() throws MauvaiseFormation, MatiereInexistanteException, CoefficientIncorrectException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
 

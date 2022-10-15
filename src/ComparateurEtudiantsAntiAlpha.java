@@ -1,5 +1,8 @@
 import java.util.Comparator;
 
+/**
+ * Comparateur qui permet de trier dans Groupe de Z à A
+ */
 public class ComparateurEtudiantsAntiAlpha implements Comparator<Etudiant> {
     @Override
     public int compare(Etudiant o1, Etudiant o2) {

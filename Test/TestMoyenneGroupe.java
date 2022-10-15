@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestMoyenneGroupe {
 
     @Test
-    public void Calculer_moyenne_groupe() throws MatiereInexistanteException, MauvaiseFormation, CoefficientIncorrecteException {
+    public void Calculer_moyenne_groupe() throws MatiereInexistanteException, MauvaiseFormation, CoefficientIncorrectException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
         f.ajouterMatiere("Physique", 4);
@@ -31,7 +31,7 @@ public class TestMoyenneGroupe {
     }
 
     @Test
-    public void Calculer_moyenne_generale_groupe() throws MatiereInexistanteException, MauvaiseFormation, CoefficientIncorrecteException {
+    public void Calculer_moyenne_generale_groupe() throws MatiereInexistanteException, MauvaiseFormation, CoefficientIncorrectException {
         Formation f = new Formation("L3");
         f.ajouterMatiere("Maths", 6);
         f.ajouterMatiere("Physique", 4);
