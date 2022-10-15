@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 /**
@@ -19,7 +20,7 @@ public class TestEtudiant {
      * etudiant ajout de notes avec la methode testee, sert de compare
      */
     @Test
-    public void testAjouterNote() throws MatiereInexistanteException, CoefficientIncorrectException {
+    public void testAjouterNote() throws MatiereInexistanteException, CoefficientIncorrectException, NoteIncorrecteException {
         Identite i1 = new Identite("23", "Dupont", "Jean");
         Formation f1 = new Formation("DUT Informatique");
         f1.ajouterMatiere("Mathematiques",3);
@@ -27,12 +28,40 @@ public class TestEtudiant {
         Etudiant e1 = new Etudiant(i1, f1);
         e1.ajouterNote("Mathematiques", 12);
         e1.ajouterNote("Physique", 15);
-
+        //Tests
         assertEquals(e1.getNotes().get("Mathematiques").size(), 1);
         assertEquals(e1.getNotes().get("Physique").size(), 1);
-
-
     }
+
+
+    /**
+     * Test vérifiant la bonne levée de NoteIncorrecteException
+     */
+    @Test
+    public void testAjouterNote_noteIncorrecte() throws MatiereInexistanteException, CoefficientIncorrectException, NoteIncorrecteException {
+        Identite i1 = new Identite("23", "Dupont", "Jean");
+        Formation f1 = new Formation("DUT Informatique");
+        f1.ajouterMatiere("Mathematiques",3);
+        f1.ajouterMatiere("Physique",2);
+        Etudiant e1 = new Etudiant(i1, f1);
+        //tests
+        assertThrows(NoteIncorrecteException.class,()->e1.ajouterNote("Mathematiques", 63628716));
+        assertThrows(NoteIncorrecteException.class,()->e1.ajouterNote("Mathematiques", -3));
+    }
+
+    /**
+     * Test vérifiant la bonne levée de MatiereInexistanteException
+     */
+    @Test
+    public void testAjouterNote_MatiereInexistante() throws MatiereInexistanteException, CoefficientIncorrectException, NoteIncorrecteException {
+        Identite i1 = new Identite("23", "Dupont", "Jean");
+        Formation f1 = new Formation("DUT Informatique");
+        f1.ajouterMatiere("Mathematiques",3);
+        f1.ajouterMatiere("Physique",2);
+        Etudiant e1 = new Etudiant(i1, f1);
+        assertThrows(MatiereInexistanteException.class,()->e1.ajouterNote("Mystère", 12));
+    }
+
     /**
      * Test de la méthode de calcul de moyenne
      * compare le resultat prevu d'une moyenne au resultat de la methode
@@ -53,6 +82,28 @@ public class TestEtudiant {
         Etudiant etudiant = new Etudiant(new Identite(), new Formation("Formation classique"),notes);
         //methode testee + tests
         assertEquals(11.0,etudiant.calculerMoyenne("Francais"));
+    }
+
+    /**
+     * Test de la méthode de calcul de moyenne
+     * compare le resultat prevu d'une moyenne au resultat de la methode
+     */
+    @Test
+    public void testCalculerMoyenne_matiereInexistante() throws MatiereInexistanteException {
+        //preparation donnees
+        ArrayList <Double> noteMath = new ArrayList<>();
+        noteMath.add(15.0);
+
+        ArrayList <Double> noteFr = new ArrayList<>();
+        noteFr.add(10.0);
+        noteFr.add(12.0);
+
+        HashMap <String, ArrayList<Double>> notes = new HashMap<>();
+        notes.put("Maths",noteMath);
+        notes.put("Francais", noteFr);
+        Etudiant etudiant = new Etudiant(new Identite(), new Formation("Formation classique"),notes);
+        //methode testee + tests
+        assertThrows(MatiereInexistanteException.class,()->etudiant.calculerMoyenne("Francais"));
     }
 
     /**

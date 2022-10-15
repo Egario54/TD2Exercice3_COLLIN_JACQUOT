@@ -63,19 +63,22 @@ public class Etudiant {
      * @param note
      * @throws MatiereInexistanteException si la matière n'existe pas.
      */
-    public void ajouterNote(String matière, double note) throws MatiereInexistanteException {
-        if (notes.containsKey(matière)) {
-            notes.get(matière).add(note);
-        } else {
-            if (this.formation.getMatieres().contains(matière)){
-                ArrayList<Double> list = new ArrayList<>();
-                list.add(note);
-                notes.put(matière, list);
-            }
-            else {
-                throw new MatiereInexistanteException();
+    public void ajouterNote(String matière, double note) throws MatiereInexistanteException,NoteIncorrecteException {
+        if(note<20.0&&note>0.0){
+            if (notes.containsKey(matière)) {
+                notes.get(matière).add(note);
+            } else {
+                if (this.formation.getMatieres().contains(matière)){
+                    ArrayList<Double> list = new ArrayList<>();
+                    list.add(note);
+                    notes.put(matière, list);
+                }
+                else {
+                    throw new MatiereInexistanteException();
+                }
             }
         }
+        else throw new NoteIncorrecteException();
     }
 
     /**
