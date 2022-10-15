@@ -10,6 +10,7 @@ class Identite{
 +Identite(String,String,String)
 +toString()
 }
+
 class Etudiant{
 -HashMap<String:Matière,List<Double>:notes> résultats
 ---
@@ -19,18 +20,25 @@ class Etudiant{
 +calculerMoyenne(String)
 +calculerMoyenneGenerale()
 }
+
 class Formation{
   -String idformation
   -HashMap<String:matiere,Integer:coefficient> matières
   ---
-  +Formation()
+  +Formation(String)
+  +ajouterMatiere(String, Integer)
+  +supprimerMatière(String)
 }
+
 class Groupe{
 ---
 +Groupe()
 +ajouterEtudiant(Etudiant)
 +supprimerEtudiant(Etudiant)
++calculerMoyenneGroupe (Matière): double
++calculerMoyenneGeneraleGroupe: double
 }
+
 Groupe -> Etudiant : -Etudiants etu
 Groupe -> Formation : -Formation form
 Etudiant -> Identite : -Identite idEtu
